@@ -1,0 +1,124 @@
+extends layout
+
+block content
+  style.
+    .circular-img {
+      width: 250px; /* Adjust the size as needed */
+      height: 250px; /* Adjust the size as needed */
+      border-radius: 70%;
+      object-fit: cover; /* Ensures the image covers the circle without distortion */
+    }
+    .bottom-right-img {
+      position: absolute;
+      bottom: 10px; /* Adjust distance from the bottom */
+      right: 10px; /* Adjust distance from the right */
+      width: 100px; /* Adjust size as needed */
+      height: 100px; /* Ensure it’s a perfect circle */
+      border-radius: 50%; /* Makes the image circular */
+      object-fit: cover; /* Ensures the image covers the circle without distortion */
+    }
+    .media-img {
+      width: 100px; /* Adjust the size as needed */
+      height: 100px; /* Adjust the size as needed */
+      border-radius: 50%; /* Makes the image circular */
+      object-fit: cover; /* Ensures the image covers the circle without distortion */
+      margin-right: 50px; /* Space between the image and text */
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px; /* Space between items */
+    }
+    .text {
+      font-size: 30px; /* Adjust font size as needed */
+      margin-left: 10px; /* Space between the image and text */
+      text-decoration: none; /* Remove underline from links */
+    }
+    .text h3 {
+      margin: 0; /* Remove default margin for heading */
+    }
+    .social-media-links {
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+    }
+
+  .row.banner
+    .col-12
+      h1= title
+
+  .row
+    .col-12.col-lg-8
+      p
+        | <h3>In this page you can find notes of various programming languages & Subjects.</h3>
+        | <br /><br />
+        | <h3>Here you can access notes either by clicking on image or text.</h3>
+        | <center><h1 style="color:red;">NOTES</h1></center>
+      .programming-languages-links
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/1G0TnOzo_Acg5w2f0L6I-AfdPXKRDsBAx?usp=sharing')
+            img.media-img(src='/images/C.jpeg')
+            | C Programming
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1CDDORJ_GLodxyaIrZu8AAXkzrh0DEsuw/view?usp=sharing')
+            img.media-img(src='/images/C.jpeg')
+            | Visual Graphics in C
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/15QdyuqMy-tr6-XtRHST60VVY5Xrv7aMV?usp=sharing')
+            img.media-img(src='/images/python.png')
+            | Python
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/15hKK41D4Z66y37Izgsmg0dEH09xu6jZQ?usp=sharing')
+            img.media-img(src='/images/java.png')
+            | Java
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/11QhKGPbVy4VpZ444u1VnkZ24fUGEZc6K?usp=sharing')
+            img.media-img(src='/images/dsa.png')
+            | Datastructures And Algorithms
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/1W1cR4mo7DkT-gp4kZZtHjO_wR90ciDIL?usp=sharing')
+            img.media-img(src='/images/hcjs.png')
+            | HTML,CSS and JAVASCRIPT
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/1e5_uMXH2x6ZP0BNedtqm8hrdAL-ziQBd?usp=sharing')
+            img.media-img(src='/images/mean.jpeg')
+            | MEAN STACK DEVELOPMENT
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/1hIUNxzV8FLvWaOM00vzG-hYNjecORE-w?usp=sharing')
+            img.media-img(src='/images/mern.png')
+            | MERN STACK DEVELOPMENT
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/15iwf2MP4A7jNIH0XjPc8PuJJ5Q6Ht5GU?usp=sharing')
+            img.media-img(src='/images/dbms.jpeg')
+            | DATABASE MANAGEMENT SYSTEMS
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/1jcywc08y9Pr3ybl6SAI0fUXV-JG8NYu9?usp=sharing')
+            img.media-img(src='/images/ai.jpeg')
+            | Artificial Intelligence
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/1UJx6CBH_Zog9FtPp2PeEVd5n-8d37acY?usp=sharing')
+            img.media-img(src='/images/ml.jpeg')
+            | Machine Learning
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/1tHCRuIYiaOZ4MJ5RDUAnHIKl_kpmaN82?usp=sharing')
+            img.media-img(src='/images/cs.png')
+            | Computer-Operating Systems,Computer Networks
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1g-9oRSBrmjQCiKuvg3hI8dy3a51LcILX/view?usp=sharing')
+            img.media-img(src='/images/linux.png')
+            | Linux 
+        a.text(href='https://drive.google.com/file/d/1sUN6PJ9DUKU2uF25rrJIwbUhHk6HcQeM/view?usp=sharing')
+            img.media-img(src='/images/arduino.jpeg')
+            | Arduino Programming
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/1okhjnMH5Li8w5-HANf-d1P6J5w5A6hxT?usp=sharing')
+            img.media-img(src='/images/FSE.png')
+            | Software Engineering
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/1eZu9FBM-Jz1yPySrapDZrxLCs59zpS9Q?usp=sharing')
+            img.media-img(src='/images/ed.png')
+            | Entreupreneurship Development
+        .nav-item
+          a.text(href='https://drive.google.com/drive/folders/1xrjxM2SRfnQeL-3epQ_JuZDA38JYNglI?usp=sharing')
+            img.media-img(src='/images/ps.jpeg')
+            | Probability And Statistics
+

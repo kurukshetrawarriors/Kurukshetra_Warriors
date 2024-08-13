@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  style.
+    .circular-img {
+      width: 250px; /* Adjust the size as needed */
+      height: 250px; /* Adjust the size as needed */
+      border-radius: 70%;
+      object-fit: cover; /* Ensures the image covers the circle without distortion */
+    }
+    .bottom-right-img {
+      position: absolute;
+      bottom: 10px; /* Adjust distance from the bottom */
+      right: 10px; /* Adjust distance from the right */
+      width: 100px; /* Adjust size as needed */
+      height: 100px; /* Ensure it’s a perfect circle */
+      border-radius: 50%; /* Makes the image circular */
+      object-fit: cover; /* Ensures the image covers the circle without distortion */
+    }
+    .media-img {
+      width: 50px; /* Adjust the size as needed */
+      height: 50px; /* Adjust the size as needed */
+      border-radius: 70%;
+      object-fit: cover; /* Ensures the image covers the circle without distortion */
+      margin: 10px; /* Add space around the image */
+    }
+
+  .row.banner
+    .col-12
+      h1= title
+
+  .row
+    .col-12.col-lg-8
+      center
+        img.circular-img(src='/images/kwlogo.png', alt='Description of image')
+      p
+        | <h3>Kurukshetra learners was created to help students learn from video lectures by experts.</h3>
+        | <br /><br />
+        | <h3>Here you can access notes as well as courses for free.</h3>
+        | <center><h1 style="color:red;">SOCIAL MEDIA LINKS<h1></center>
+      center
+        a(href='http://www.linkedin.com/in/kurukshetra-warriors-672428322') 
+          img.media-img(src='/images/linkedin.png')
+        a(href='https://www.youtube.com/@Balabrahma')
+          img.media-img(src='/images/youtube.png')
+        a(href='https://github.com/kurukshetrawarriors')
+          img.media-img(src='/images/github.png')
+        a(href='mailto:kurukshetrawarriors2005@gmail.com')
+          img.media-img(src='/images/gmail.jpeg') 
+      a(href='https://chat.whatsapp.com/By3Auk7WTcvCfFAkMERHEO')
+        img.bottom-right-img(src='/images/whatsapp.jpeg')

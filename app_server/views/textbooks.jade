@@ -1,0 +1,105 @@
+extends layout
+
+block content
+  style.
+    .circular-img {
+      width: 250px; /* Adjust the size as needed */
+      height: 250px; /* Adjust the size as needed */
+      border-radius: 70%;
+      object-fit: cover; /* Ensures the image covers the circle without distortion */
+    }
+    .bottom-right-img {
+      position: absolute;
+      bottom: 10px; /* Adjust distance from the bottom */
+      right: 10px; /* Adjust distance from the right */
+      width: 100px; /* Adjust size as needed */
+      height: 100px; /* Ensure it’s a perfect circle */
+      border-radius: 50%; /* Makes the image circular */
+      object-fit: cover; /* Ensures the image covers the circle without distortion */
+    }
+    .media-img {
+      width: 100px; /* Adjust the size as needed */
+      height: 100px; /* Adjust the size as needed */
+      border-radius: 50%; /* Makes the image circular */
+      object-fit: cover; /* Ensures the image covers the circle without distortion */
+      margin-right: 50px; /* Space between the image and text */
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px; /* Space between items */
+    }
+    .text {
+      font-size: 30px; /* Adjust font size as needed */
+      margin-left: 10px; /* Space between the image and text */
+      text-decoration: none; /* Remove underline from links */
+    }
+    .text h3 {
+      margin: 0; /* Remove default margin for heading */
+    }
+    .social-media-links {
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+    }
+
+  .row.banner
+    .col-12
+      h1= title
+
+  .row
+    .col-12.col-lg-8
+      p
+        | <h3>In this page you can find Text Books of various programming languages & Subjects.</h3>
+        | <br /><br />
+        | <h3>Here you can access text books either by clicking on image or text.</h3>
+        | <center><h1 style="color:red;">TEXT BOOKS</h1></center>
+      .programming-languages-links
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1ThjoGGwy8CJMnM2Qnkg_BOSEiFZUlw2H/view?usp=sharing')
+            img.media-img(src='/images/C++.png')
+            | C++ Programming
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/12SNNf3kQZ3qqO_kha_SkC9SGAIqevsqF/view?usp=sharing')
+            img.media-img(src='/images/html.jpeg')
+            | HTML
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1U76QZ1nBwt6bjqbYt5w3TuVZH-PXCS1n/view?usp=sharing')
+            img.media-img(src='/images/css.png')
+            | CSS
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1jtBJB49F2LY94izdOOLoCJBdiwCU7yp_/view?usp=sharing')
+            img.media-img(src='/images/js.png')
+            | JavaScript
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/18tin_hbautziTanBWJ3Bx3hWQlcq7nyw/view?usp=sharing')
+            img.media-img(src='/images/hcjs.png')
+            | HTML,CSS,JS
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1RSmaEaQfDRaNnyBy7-RjEVrMHr1KxIT8/view?usp=sharing')
+            img.media-img(src='/images/dbms.jpeg')
+            | DataBase Management Systems
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1E_2ceGU4SKQu_qJZGZAPJZkNN4R8DegW/view?usp=sharing')
+            img.media-img(src='/images/mean.jpeg')
+            | MEAN Stack Development
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1WoSpj9AzXpLyg9jDVBTObE6i-b8rT1M2/view?usp=sharing')
+            img.media-img(src='/images/ml.jpeg')
+            | Machine Learning 
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1-7bBy-gYVChUjAZDkVL6Z3B_c14WW6eP/view?usp=sharing')
+            img.media-img(src='/images/ml.jpeg')
+            | Python with ML
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1x2uaz_OK3XZ33BeFu3KtU68BD4eCP06C/view?usp=sharing')
+            img.media-img(src='/images/ml.jpeg')
+            | Image Processing ML 
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1NkcDBgAAGKRscxoi7BAXZhqH1dZJSqfy/view?usp=sharing')
+            img.media-img(src='/images/android.png')
+            | Android 
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1haoCiXYxgFnPyjhayICw30Sja9EnK5PQ/view?usp=sharing')
+            img.media-img(src='/images/FSE.png')
+            | Software Engineering
+

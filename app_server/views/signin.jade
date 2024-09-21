@@ -1,0 +1,55 @@
+extends layout
+
+block content
+  .container(style="display: flex; justify-content: center; align-items: center; height: 100vh;")
+    .box(style="padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 300px; text-align: center; background-color: #f9f9f9;")
+      h2(style="color: #333;") Choose an Option
+
+      .button-group(style="margin-bottom: 20px;")
+        button(type="button", style="margin-right: 10px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px;", onclick="showForm('signup')") Sign Up
+        button(type="button", style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px;", onclick="showForm('signin')") Sign In
+
+      .form-container
+        #signup-form(style="display:none;")
+          h3(style="color: #333;") Sign Up
+          form(action="/auth/signup", method="POST")
+            .form-group(style="margin-bottom: 10px;")
+              label(for="signup-email", style="color: #333;") Email:
+              input(type="email", id="signup-email", name="email", required, style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; color: #333;")
+            .form-group(style="margin-bottom: 10px;")
+              label(for="signup-name", style="color: #333;") Name:
+              input(type="text", id="signup-name", name="name", required, style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; color: #333;")
+            .form-group(style="margin-bottom: 10px;")
+              label(for="signup-password", style="color: #333;") Password:
+              input(type="password", id="signup-password", name="password", required, style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; color: #333;")
+            .form-group(style="margin-bottom: 10px;")
+              label(for="signup-profession", style="color: #333;") Profession:
+              select(id="signup-profession", name="profession", style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; color: #333;")
+                option(value="student") Student
+                option(value="lecturer") Lecturer
+                option(value="software-engineer") Software Engineer
+                option(value="other") Other
+            .form-group(style="margin-bottom: 10px;")
+              label(for="signup-college", style="color: #333;") Name of College/Office:
+              input(type="text", id="signup-college", name="college", style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; color: #333;")
+            button(type="submit", style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px;") Sign Up
+
+        #signin-form(style="display:none;")
+          h3(style="color: #333;") Sign In
+          form
+            .form-group(style="margin-bottom: 10px;")
+              label(for="signin-email", style="color: #333;") Email:
+              input(type="email", id="signin-email", name="email", required, style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; color: #333;")
+            .form-group(style="margin-bottom: 10px;")
+              label(for="signin-password", style="color: #333;") Password:
+              input(type="password", id="signin-password", name="password", required, style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; color: #333;")
+            .form-group(style="margin-bottom: 10px;")
+              input(type="checkbox", id="remember-me", name="remember")
+              label(for="remember-me", style="color: #333;") Remember me
+            button(type="submit", style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px;") Sign In
+
+  script.
+    function showForm(formType) {
+      document.getElementById('signup-form').style.display = formType === 'signup' ? 'block' : 'none';
+      document.getElementById('signin-form').style.display = formType === 'signin' ? 'block' : 'none';
+    }

@@ -6,7 +6,7 @@ legend {
  font-family: 'Lobster', cursive;
 }
 .navbar {
- background-color: #ad1d28;
+ background-color: #dfe227;
  border-color: #911821;
 }
 .navbar-light .navbar-brand {
@@ -26,7 +26,7 @@ legend {
  color: white;
 }
 .card {
- background-color: #469ea8;
+ background-color: #16620d;
  padding: 1rem;
 }
 .card-primary {
@@ -35,7 +35,7 @@ legend {
 }
 .banner {
  margin-top: 4em;
- border-bottom: 1px solid #469ea8;
+ border-bottom: 1px solid #e19914;
  margin-bottom: 1.5em;
  padding-bottom: 0.5em;
 }
@@ -83,5 +83,5 @@ h4 small {
  body {
   font-family: "Cabin", Arial, sans-serif;
   color: #fff;
-  background-color: #108a93;
+  background-color: #9b17d8;
  } 

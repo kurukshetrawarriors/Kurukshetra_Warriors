@@ -1,6 +1,11 @@
 extends layout
 
 block content
+  style.
+    .fas.fa-star, .far.fa-star {
+      color: #FFD700; /* Gold color */
+    }
+
   .row.banner
     .col-12
       h1  C Programming
@@ -51,9 +56,5 @@ block content
       .col-12
         .card.card-primary.review-card
           .card-block
-            a.btn.btn-primary.float-right(href='/location/review/new') ➥ Add review
-            h2.card-title Customer reviews
- 
-
-    .col-12.col-lg-3
-      
+            a.btn.btn-primary.float-right(href='/Courses/review/new') ➥ Add review
+            h2.card-title Student reviews

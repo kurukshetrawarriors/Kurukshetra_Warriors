@@ -74,7 +74,7 @@ block content
   // Certificate Input
   div#certificateContainer
     input#nameInput(type="text", placeholder="Enter your name")
-    input#courseInput(type="text", placeholder="Enter course name") 
+    //input#courseInput(type="text", placeholder="Enter course name") 
     input#emailInput(type="email", placeholder="Enter your email")
     button.btn.btn-success(onclick="generateCertificate()") Download Certificate
 
@@ -204,10 +204,10 @@ block content
     // Generate the certificate and download it
     function generateCertificate() {
       var name = document.getElementById('nameInput').value;
-      var course = document.getElementById('courseInput').value; // Get the course name input
+      //var course = document.getElementById('courseInput').value; // Get the course name input
       var date = new Date().toLocaleDateString(); // Automatically set today's date
 
-      if (!name || !course) {
+      if (!name) {
         alert("Please enter all required details.");
         return;
       }

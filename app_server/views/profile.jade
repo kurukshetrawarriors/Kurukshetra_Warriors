@@ -1,7 +1,7 @@
-doctype html
-html
-  head
-    title My Page
-  body
-    h1 Hello, World!
-    p This is a message in Jade (Pug).
+// views/profile.pug
+extends layout
+
+block content
+  .container(style="margin: 30px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: red")
+    h1 User Profile
+    h2 Welcome, your login credentials are valid. Proceed to courses

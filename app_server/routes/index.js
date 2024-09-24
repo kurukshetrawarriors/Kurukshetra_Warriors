@@ -11,6 +11,7 @@ const ctrlProfile=require('../controllers/profile')
 router.get('/', ctrlCourses.homelist);
 router.get('/Courses', ctrlCourses.CoursesInfo);
 router.get('/Courses/review/new', ctrlCourses.addReview);
+router.get('/Courses/enroll', ctrlCourses.cenroll);
 /* Other pages */
 router.get('/about', ctrlOthers.about);
 /* Lectures pages */
@@ -21,4 +22,5 @@ router.get('/textbooks', ctrlTbpdfs.textbooks);
 router.get('/register-login',ctrlloginregister.signuporin);
 /*Profile of user*/
 router.get('/profile',ctrlProfile.userprofile);
+  
 module.exports = router;

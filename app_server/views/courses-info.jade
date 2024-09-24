@@ -5,10 +5,29 @@ block content
     .fas.fa-star, .far.fa-star {
       color: #FFD700; /* Gold color */
     }
+    .enroll-btn {
+      display: inline-block;
+      background-color: #007bff; /* Bootstrap's primary blue color */
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      float: right;
+      margin-top: 10px; /* Space below the heading */
+    }
+    .enroll-btn:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+      color: white;
+      text-decoration: none;
+    }
 
-  .row.banner
+  .row.banner 
     .col-12
       h1  C Programming
+
+  // Enroll Now button below the heading in the top-right
+  a.enroll-btn(href='/Courses/enroll') Enroll Now
 
   .row
     .col-12.col-lg-9

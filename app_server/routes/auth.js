@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcrypt'); // Import bcrypt for password hashing
 const User = require('../models/User');
 
 // Sign-up route
@@ -7,11 +8,14 @@ router.post('/signup', async (req, res) => {
   const { email, name, password, profession, college } = req.body;
 
   try {
-    // Create a new user document
+    // Hash the password before saving
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create a new user document with the hashed password
     const newUser = new User({
       email,
       name,
-      password,  // Note: In production, you should hash the password before saving
+      password: hashedPassword,  // Store the hashed password
       profession,
       college
     });
@@ -19,8 +23,8 @@ router.post('/signup', async (req, res) => {
     // Save the user document to MongoDB
     await newUser.save();
 
-    // Respond with a success message
-    res.status(201).send('User created successfully!');
+    // Redirect to profile page or a welcome page after successful sign-up
+    res.redirect('/profile');  // Redirect to profile page after sign-up
   } catch (error) {
     console.error(error);
     res.status(500).send('Error creating user');

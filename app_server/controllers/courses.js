@@ -10,8 +10,12 @@ const homelist = (req, res) => {
    const addReview = (req, res) => {
     res.render('course-review-form', { title: 'Add review' });
    };
+   const cenroll = (req, res) => {
+    res.render('cprog', { title: 'Enroll C' });
+   };
    module.exports = {
     homelist,
     CoursesInfo,
-    addReview
+    addReview,
+    cenroll
    };

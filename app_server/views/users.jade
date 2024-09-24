@@ -1,0 +1,25 @@
+// In views/users.pug
+extends layout
+
+block content
+  .container(style="margin: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;")
+    h1 User List
+
+    if users.length > 0
+      table(style="width: 100%; border-collapse: collapse;")
+        thead
+          tr
+            th Name
+            th Email
+            th Profession
+            th College
+        tbody
+          each user in users
+            tr
+              td #{user.name}
+              td #{user.email}
+              td #{user.profession}
+              td #{user.college}
+              
+    else
+      p No users found.

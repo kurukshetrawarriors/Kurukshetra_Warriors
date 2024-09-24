@@ -1,0 +1,233 @@
+extends layout
+
+block content
+  head
+    title YouTube Video with Progress Bar
+    script(src="https://www.youtube.com/iframe_api")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js")
+    style.
+      /* Styling for centering the video and progress bar */
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center horizontally */
+        justify-content: center; /* Center vertically */
+        min-height: 100vh; /* Full viewport height */
+        margin: 0;
+      }
+      .progress-container {
+        width: 100%;
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+      .progress-bar {
+        width: 0%;
+        height: 20px;
+        background-color: #007bff;
+        border-radius: 5px;
+      }
+      .progress-text {
+        margin-top: 5px; /* Spacing between bar and text */
+      }
+      #assessmentButton {
+        display: none; /* Initially hidden */
+        margin-top: 20px; /* Spacing above the button */
+      }
+      .mcq-container {
+        display: none; /* Hidden initially */
+        margin-top: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .question {
+        margin-bottom: 10px;
+      }
+      #resultMessage {
+        margin-top: 20px;
+        display: none;
+      }
+      #certificateContainer {
+        display: none; /* Hidden initially */
+        margin-top: 20px;
+      }
+
+  // Centered YouTube Video Container
+  .video-container
+    #player
+
+  // Progress Bar
+  .progress-container
+    .progress-bar#progressBar
+  // Progress Percentage Text
+  .progress-text#progressPercentage 0%
+
+  // Assessment Button
+  button#assessmentButton.btn.btn-primary(onclick="startAssessment()") Start Assessment
+
+  // MCQ Questions Container
+  .mcq-container#mcqContainer
+
+  // Result Message
+  p#resultMessage
+
+  // Certificate Input
+  div#certificateContainer
+    input#nameInput(type="text", placeholder="Enter your name")
+    input#courseInput(type="text", placeholder="Enter course name") 
+    input#emailInput(type="email", placeholder="Enter your email")
+    button.btn.btn-success(onclick="generateCertificate()") Download Certificate
+
+  script.
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '315',
+        width: '560',
+        videoId: 'ssJY5MDLjlo', // Updated Video ID for your YouTube video
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      // Start tracking progress when the video is ready
+      setInterval(updateProgress, 1000);
+    }
+
+    function onPlayerStateChange(event) {
+      // Handle player state changes if necessary
+    }
+
+    function updateProgress() {
+      if (player && player.getDuration) {
+        var duration = player.getDuration();
+        var currentTime = player.getCurrentTime();
+        var progress = (currentTime / duration) * 100;
+
+        var progressBar = document.getElementById('progressBar');
+        var progressPercentage = document.getElementById('progressPercentage');
+        var assessmentButton = document.getElementById('assessmentButton');
+
+        progressBar.style.width = progress + '%';
+        progressPercentage.textContent = Math.round(progress) + '%'; // Display percentage
+
+        // Show Assessment button if progress is 85% or more
+        if (progress >= 85) {
+          assessmentButton.style.display = 'block';
+        } else {
+          assessmentButton.style.display = 'none';
+        }
+      }
+    }
+
+    // Start the assessment by displaying MCQs
+    function startAssessment() {
+      var mcqContainer = document.getElementById('mcqContainer');
+      mcqContainer.style.display = 'flex'; // Show the MCQ container
+
+      var questions = [
+        { question: 'What is the output of printf("%d", (a = 5));', options: ['5', '10', 'None', 'Error'], answer: '5' },
+        { question: 'Which keyword is used to define a constant variable in C?', options: ['const', 'define', 'constant', 'var'], answer: 'const' },
+        { question: 'Which of the following is a loop structure in C?', options: ['if-else', 'switch', 'for', 'function'], answer: 'for' },
+        { question: 'Who developed C language?', options: ['Dennis Ritchie', 'Bjarne Stroustrup', 'James Gosling', 'Ken Thompson'], answer: 'Dennis Ritchie' },
+        { question: 'What is the size of an integer in C?', options: ['2 bytes', '4 bytes', 'Depends on system', '1 byte'], answer: 'Depends on system' },
+      ];
+
+      // Create MCQ questions
+      mcqContainer.innerHTML = ''; // Clear previous questions
+      questions.forEach(function (q, index) {
+        var questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+
+        var questionText = document.createElement('p');
+        questionText.innerHTML = (index + 1) + '. ' + q.question;
+        questionDiv.appendChild(questionText);
+
+        q.options.forEach(function (option) {
+          var label = document.createElement('label');
+          var radio = document.createElement('input');
+          radio.type = 'radio';
+          radio.name = 'question' + index;
+          radio.value = option;
+          label.appendChild(radio);
+          label.appendChild(document.createTextNode(option));
+          questionDiv.appendChild(label);
+          questionDiv.appendChild(document.createElement('br'));
+        });
+
+        mcqContainer.appendChild(questionDiv);
+      });
+
+      // Add Submit button
+      var submitButton = document.createElement('button');
+      submitButton.innerHTML = 'Submit';
+      submitButton.className = 'btn btn-success';
+      submitButton.onclick = submitAssessment;
+      mcqContainer.appendChild(submitButton);
+    }
+
+    // Submit the assessment and display the result
+    function submitAssessment() {
+      var questions = [
+        { question: 'What is the output of printf("%d", (a = 5));', options: ['5', '10', 'None', 'Error'], answer: '5' },
+        { question: 'Which keyword is used to define a constant variable in C?', options: ['const', 'define', 'constant', 'var'], answer: 'const' },
+        { question: 'Which of the following is a loop structure in C?', options: ['if-else', 'switch', 'for', 'function'], answer: 'for' },
+        { question: 'Who developed C language?', options: ['Dennis Ritchie', 'Bjarne Stroustrup', 'James Gosling', 'Ken Thompson'], answer: 'Dennis Ritchie' },
+        { question: 'What is the size of an integer in C?', options: ['2 bytes', '4 bytes', 'Depends on system', '1 byte'], answer: 'Depends on system' },
+      ];
+
+      var correctAnswersCount = 0;
+
+      questions.forEach(function (q, index) {
+        var selectedOption = document.querySelector('input[name="question' + index + '"]:checked');
+        if (selectedOption && selectedOption.value === q.answer) {
+          correctAnswersCount++;
+        }
+      });
+
+      var resultMessage = document.getElementById('resultMessage');
+      var certificateContainer = document.getElementById('certificateContainer');
+
+      if (correctAnswersCount >= 3) {
+        resultMessage.textContent = 'Qualified! You answered ' + correctAnswersCount + ' out of ' + questions.length + ' correctly.';
+        certificateContainer.style.display = 'block'; // Show certificate input
+      } else {
+        resultMessage.textContent = 'Not Qualified. You answered ' + correctAnswersCount + ' out of ' + questions.length + ' correctly.';
+        certificateContainer.style.display = 'none'; // Hide certificate input
+      }
+      resultMessage.style.display = 'block'; // Show result message
+    }
+
+    // Generate the certificate and download it
+    function generateCertificate() {
+      var name = document.getElementById('nameInput').value;
+      var course = document.getElementById('courseInput').value; // Get the course name input
+      var date = new Date().toLocaleDateString(); // Automatically set today's date
+
+      if (!name || !course) {
+        alert("Please enter all required details.");
+        return;
+      }
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      // Load background image of the certificate
+      var img = new Image();
+      img.src = '/images/C-cert.png'; // Replace with the path to the certificate template image
+      img.onload = function () {
+        doc.addImage(img, 'PNG', 0, 0, 210, 297); // Fit image to A4 size (210x297mm)
+
+        // Add the dynamic text (Name, Course, Date)
+        doc.setFontSize(30);
+        doc.text(name, 105, 145, null, null, 'center'); // Position name directly above the line
+
+       
+
+        // Save the final certificate
+        doc.save("certificate.pdf");
+      };
+    }

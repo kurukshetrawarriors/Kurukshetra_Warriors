@@ -7,6 +7,7 @@ const ctrlLectures=require('../controllers/lectures');
 const ctrlTbpdfs=require('../controllers/tbpdfs')
 const ctrlloginregister=require('../controllers/account')
 const ctrlProfile=require('../controllers/profile')
+const ctrlQuiz=require('../controllers/quiz')
 /* Locations pages */
 router.get('/', ctrlCourses.homelist);
 router.get('/Courses', ctrlCourses.CoursesInfo);
@@ -22,5 +23,6 @@ router.get('/textbooks', ctrlTbpdfs.textbooks);
 router.get('/register-login',ctrlloginregister.signuporin);
 /*Profile of user*/
 router.get('/profile',ctrlProfile.userprofile);
-  
+/* Contests*/
+router.get('/quizcontest',ctrlQuiz.competition);
 module.exports = router;

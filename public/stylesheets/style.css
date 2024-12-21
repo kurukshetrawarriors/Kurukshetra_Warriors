@@ -1,21 +1,18 @@
 @import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
-h1, h2, h3, h4, h5, h6 {
- font-family: 'Lobster', cursive;
-}
+
 legend {
  font-family: 'Lobster', cursive;
 }
 .navbar {
- background-color: #dfe227;
+ background-color:peru;
  border-color: #911821;
 }
 .navbar-light .navbar-brand {
- font-family: 'Lobster', cursive;
- color: #fff;
+ color:black;
 }
 .navbar-light .navbar-toggler {
- color: white;
- border-color: white;
+ color:black;
+ border-color: black;
 }
 .navbar-light .navbar-toggler-icon {
  background-image: url("data:image/svgxml;charset=utf8,%3Csvg viewBox='0 0 30 30'xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2'stroke-linecap='round'stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E")
@@ -23,10 +20,10 @@ legend {
 .navbar-light .navbar-nav .nav-link,
 .navbar-light .navbar-nav .nav-link:focus,
 .navbar-light .navbar-nav .nav-link:hover {
- color: white;
+ color: black;
 }
 .card {
- background-color: #16620d;
+ background-color: lawngreen;
  padding: 1rem;
 }
 .card-primary {
@@ -55,15 +52,15 @@ legend {
  border-color: #911821;
 }
 h4 a, h4 a:hover {
- color: #fff;
+ color: black;
 }
 h4 small {
   font-size: 60%;
   line-height: 200%;
-  color: #aaa;
+  color: black;
  }
  h1 small {
-  color: #aaa;
+  color:black;
  }
  .address {
   margin-bottom: 0.5rem;
@@ -75,13 +72,13 @@ h4 small {
   margin-bottom: 0.65rem;
  }
  a {
-  color: rgba(255, 255, 255, 0.8)
+  color: black
  }
  a:hover {
-  color:#fff
+  color:gold
  }
  body {
   font-family: "Cabin", Arial, sans-serif;
-  color: #fff;
-  background-color: #9b17d8;
+  color: black;
+  background-color:gainsboro;
  } 

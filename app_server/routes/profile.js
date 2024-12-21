@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-
+const profileController = require('../controllers/profileController');
+router.get('/profile', profileController.getProfile);
 // Middleware to check if user is authenticated
 function ensureAuthenticated(req, res, next) {
   if (req.session.userId) {

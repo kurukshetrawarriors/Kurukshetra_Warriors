@@ -9,6 +9,7 @@ const authRoutes = require('./app_server/routes/auth'); // Import the auth route
 const authprofRoutes=require('./app_server/routes/authprof');
 const reviewRoutes = require('./app_server/routes/reviews'); // Import the review routes
 const profileRoutes = require('./app_server/routes/profile'); // Import your profile routes
+const certificateRoutes = require('./app_server/routes/certificates');
 
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
@@ -33,6 +34,10 @@ app.use('/authprof',authprofRoutes);
 app.use('/Courses', reviewRoutes); // Add review routes under /Courses
 app.use('/profile', profileRoutes);
 app.use('/userslist', userlistRoutes);
+app.use(certificateRoutes);
+const profileRoute = require('./app_server/routes/profile');
+app.use(profileRoute);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

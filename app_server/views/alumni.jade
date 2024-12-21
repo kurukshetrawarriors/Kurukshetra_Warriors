@@ -1,0 +1,105 @@
+extends layout
+
+block content
+  h1= title
+  h2 User Information Table
+
+  //- Table styling
+  style.
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 5px solid black;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: gold ;
+    }
+    td{
+      background-color: #f0f8ff;
+      color: #333;
+    }
+    
+    .button {
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color:red ;
+    }
+
+  table
+    thead
+      tr
+        th Name
+        th Email
+        th Contact
+        th Company
+        th Designation 
+        th Skills
+        th College
+        th LinkedIn
+    tbody
+      tr
+        td P.S.V.S.Balsubramanyam
+        td pramidibalu2005@gmail.com
+        td +917659004280
+        td Google 
+        td Web developer
+        td JavaScript, Node.js, Angular
+        td Anurag University
+        td: button.button(onclick="window.location.href='https://www.linkedin.com/in/pramidi-sri-venkata-sai-balasubramanyam-a4815826a/'") View Profile
+      tr
+        td M.Jahnavi
+        td jahnavimuddu1@gmail.com
+        td +918374229462
+        td Zemoso Technologies
+        td Software Engineer
+        td Web development,Python Full Stack
+        td MVSR
+        td: button.button(onclick="window.location.href='https://www.linkedin.com/in/jahnavi-muddu/'") View Profile
+      tr
+        td Prasanjith Sendha
+        td prasanjith.2004@gmail.com
+        td +918309293247
+        td Microsoft 
+        td Data Engineer
+        td Python,ML
+        td Anurag University
+        td: button.button(onclick="window.location.href='https://www.linkedin.com/in/prasanjith-sendha-a12b78271/'") View Profile
+      tr
+        td G.Nithyanandhana
+        td Nithya2004@gmail.com
+        td +917981692511
+        td Infosys
+        td Web developer
+        td MERN
+        td Anurag University
+        td: button.button(onclick="window.location.href='https://www.linkedin.com/in/nithyanandhana-gangaram-6128a6272/'") View Profile
+      tr
+        td S.Pranay
+        td pranay@gmail.com
+        td +917659004280
+        td DISAi Magazine
+        td Generative AI Lead
+        td Python,AIML
+        td Osmania University
+        td: button.button(onclick="window.location.href='https://www.linkedin.com/in/pranay-s-9098092b0/'") View Profile
+      tr 
+        td B.Shreyansh
+        td bachchushreyansh@gmail.com
+        td +919182593182
+        td Krafton
+        td Android Developer
+        td Graphics designing,KOTLIN
+        td Osmania University
+        td: button.button(onclick="window.location.href='https://www.linkedin.com/in/pranay-s-9098092b0/'") View Profile
+      

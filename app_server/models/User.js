@@ -6,6 +6,12 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   profession: { type: String, required: true },
   college: { type: String },
+  certifications: [
+    {
+      courseName: String,
+      date: Date,
+    },
+  ],
 });
 
 const User = mongoose.model('User', userSchema);

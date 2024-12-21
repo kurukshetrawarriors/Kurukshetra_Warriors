@@ -1,7 +1,62 @@
-// views/profile.pug
 extends layout
 
 block content
-  .container(style="margin: 30px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: red")
-    h1 User Profile
-    h2 Welcome, your login credentials are valid. Proceed to courses
+  h1= title
+  h2 Welcome
+
+  //- Style for rectangular boxes
+  style.
+    .box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 300px;
+      height: 150px;
+      margin: 15px;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background-color: red ;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+  .container
+    .box
+      p Courses
+      button.button(onclick="window.location.href='/'") Select
+    .box
+      p Notes
+      button.button(onclick="window.location.href='/notes'") Select
+    .box
+      p Textbooks
+      button.button(onclick="window.location.href='/textbooks'") Select
+    .box
+      p Contests
+      button.button(onclick="window.location.href='/quizcontest'") Select
+    .box
+      p Alumni Connect
+      button.button(onclick="window.location.href='/page4'") Go to Page 4
+    .box
+      p Student Connect
+      button.button(onclick="window.location.href='/page4'") Go to Page 4

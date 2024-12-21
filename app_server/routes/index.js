@@ -8,11 +8,15 @@ const ctrlTbpdfs=require('../controllers/tbpdfs')
 const ctrlloginregister=require('../controllers/account')
 const ctrlProfile=require('../controllers/profile')
 const ctrlQuiz=require('../controllers/quiz')
+const ctrlSC=require('../controllers/stuconnect')
+const ctrlAC=require('../controllers/aluconnect')
 /* Locations pages */
 router.get('/', ctrlCourses.homelist);
 router.get('/Courses', ctrlCourses.CoursesInfo);
 router.get('/Courses/review/new', ctrlCourses.addReview);
 router.get('/Courses/enroll', ctrlCourses.cenroll);
+router.get('/studentconnect',ctrlSC.sc);
+router.get('/alumniconnect',ctrlAC.ac);
 /* Other pages */
 router.get('/about', ctrlOthers.about);
 /* Lectures pages */

@@ -1,0 +1,97 @@
+extends layout
+
+block content
+  h1= title
+  h2 User Information Table
+
+  //- Table styling
+  style.
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 5px solid black;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: gold ;
+    }
+    td{
+      background-color: #f0f8ff;
+      color: #333;
+    }
+    
+    .button {
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color:red ;
+    }
+
+  table
+    thead
+      tr
+        th Name
+        th Email
+        th Contact
+        th Skills
+        th College
+        th LinkedIn
+    tbody
+      tr
+        td N S Koushik
+        td koushik.2005@gmail.com
+        td +917548993206
+        td Python,ML,AI
+        td Anurag University
+        td: button.button(onclick="window.location.href='https://www.linkedin.com/in/n-sai-koushik-976852287/'") View Profile
+      tr
+        td S.Harishankar 
+        td 2022is_harishankars_b@nie.ac.in
+        td 9035593369
+        td Python, Data Analysis, AI
+        td The national Institute of engineering
+        td: button.button(onclick="window.location.href='https://www.linkedin.com/in/harishankar-s-35814626b'") View Profile
+      tr
+        td G.Sahil
+        td sahilgirdhar39@gmail.com
+        td 8901555255
+        td Flutter,Dart Firebase,Kotlin,Xml
+        td Chandigarh University 
+        td: button.button(onclick="window.location.href='https://www.linkedin.com/in/sahil-g-a27a032b1/'") View Profile
+      tr
+        td Yogini Suresh Rajas 
+        td sureshrajas1410@gmail.com
+        td 9404546372
+        td Beginner
+        td Government College of engineering Amravati 
+        td: button.button(onclick="window.location.href='https://www.linkedin.com/in/yogini-rajas-a1169228b'") View Profile
+      tr
+        td G.Sahil
+        td sureshrajas1410@gmail.com
+        td 9404546372
+        td Beginner
+        td Government College of engineering Amravati 
+        td: button.button(onclick="window.location.href=''") View Profile
+      tr
+        td G.Sahil
+        td sahilgirdhar39@gmail.com
+        td 8901555255
+        td Flutter,Dart Firebase,Kotlin,Xml
+        td Chandigarh University 
+        td: button.button(onclick="window.location.href='https://www.linkedin.com/in/sahil-g-a27a032b1/'") View Profile
+      tr
+        td G.Sahil
+        td sahilgirdhar39@gmail.com
+        td 8901555255
+        td Flutter,Dart Firebase,Kotlin,Xml
+        td Chandigarh University 
+        td: button.button(onclick="window.location.href='https://www.linkedin.com/in/sahil-g-a27a032b1/'") View Profile

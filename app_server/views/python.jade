@@ -1,0 +1,206 @@
+extends layout
+
+block content
+  head
+    title Python Course with Progress Bar
+    script(src="https://www.youtube.com/iframe_api")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js")
+    style.
+      /* Centering and Styling */
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+      .progress-container {
+        width: 100%;
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+      .progress-bar {
+        width: 0%;
+        height: 20px;
+        background-color: #28a745;
+        border-radius: 5px;
+      }
+      .progress-text {
+        margin-top: 5px;
+      }
+      #assessmentButton {
+        display: none;
+        margin-top: 20px;
+      }
+      .mcq-container {
+        display: none;
+        margin-top: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .question {
+        margin-bottom: 10px;
+      }
+      #resultMessage {
+        margin-top: 20px;
+        display: none;
+      }
+      #certificateContainer {
+        display: none;
+        margin-top: 20px;
+      }
+
+  // Video Container
+  .video-container
+    #player
+
+  // Progress Bar
+  .progress-container
+    .progress-bar#progressBar
+  .progress-text#progressPercentage 0%
+
+  // Assessment Button
+  button#assessmentButton.btn.btn-primary(onclick="startAssessment()") Start Assessment
+
+  // MCQ Questions
+  .mcq-container#mcqContainer
+
+  // Result Message
+  p#resultMessage
+
+  // Certificate Input
+  div#certificateContainer
+    input#nameInput(type="text", placeholder="Enter your name")
+    button.btn.btn-success(onclick="generateCertificate()") Download Certificate
+
+  script.
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '315',
+        width: '560',
+        videoId: 'kqtD5dpn9C8', // Replace with your Python course video ID
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      setInterval(updateProgress, 1000);
+    }
+
+    function onPlayerStateChange(event) {}
+
+    function updateProgress() {
+      if (player && player.getDuration) {
+        var duration = player.getDuration();
+        var currentTime = player.getCurrentTime();
+        var progress = (currentTime / duration) * 100;
+
+        document.getElementById('progressBar').style.width = progress + '%';
+        document.getElementById('progressPercentage').textContent = Math.round(progress) + '%';
+
+        if (progress >= 85) {
+          document.getElementById('assessmentButton').style.display = 'block';
+        }
+      }
+    }
+
+    function startAssessment() {
+      var mcqContainer = document.getElementById('mcqContainer');
+      mcqContainer.style.display = 'flex';
+
+      var questions = [
+        { question: "What is the output of print(2 ** 3)?", options: ["8", "6", "4", "Error"], answer: "8" },
+        { question: "Which keyword is used to define a function in Python?", options: ["def", "function", "lambda", "define"], answer: "def" },
+        { question: "What does 'len()' function return?", options: ["Length of an object", "Maximum value", "Minimum value", "Sum"], answer: "Length of an object" },
+        { question: "Which data type is immutable in Python?", options: ["list", "tuple", "dictionary", "set"], answer: "tuple" },
+        { question: "Who developed Python language?", options: ["Guido van Rossum", "Dennis Ritchie", "James Gosling", "Ken Thompson"], answer: "Guido van Rossum" }
+      ];
+
+      mcqContainer.innerHTML = '';
+      questions.forEach(function (q, index) {
+        var questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+
+        var questionText = document.createElement('p');
+        questionText.innerHTML = (index + 1) + '. ' + q.question;
+        questionDiv.appendChild(questionText);
+
+        q.options.forEach(function (option) {
+          var label = document.createElement('label');
+          var radio = document.createElement('input');
+          radio.type = 'radio';
+          radio.name = 'question' + index;
+          radio.value = option;
+          label.appendChild(radio);
+          label.appendChild(document.createTextNode(option));
+          questionDiv.appendChild(label);
+          questionDiv.appendChild(document.createElement('br'));
+        });
+
+        mcqContainer.appendChild(questionDiv);
+      });
+
+      var submitButton = document.createElement('button');
+      submitButton.innerHTML = 'Submit';
+      submitButton.className = 'btn btn-success';
+      submitButton.onclick = submitAssessment;
+      mcqContainer.appendChild(submitButton);
+    }
+
+    function submitAssessment() {
+      var questions = [
+        { question: "What is the output of print(2 ** 3)?", answer: "8" },
+        { question: "Which keyword is used to define a function in Python?", answer: "def" },
+        { question: "What does 'len()' function return?", answer: "Length of an object" },
+        { question: "Which data type is immutable in Python?", answer: "tuple" },
+        { question: "Who developed Python language?", answer: "Guido van Rossum" }
+      ];
+
+      var correctAnswersCount = 0;
+      questions.forEach(function (q, index) {
+        var selectedOption = document.querySelector('input[name="question' + index + '"]:checked');
+        if (selectedOption && selectedOption.value === q.answer) {
+          correctAnswersCount++;
+        }
+      });
+
+      var resultMessage = document.getElementById('resultMessage');
+      var certificateContainer = document.getElementById('certificateContainer');
+
+      if (correctAnswersCount >= 3) {
+        resultMessage.textContent = 'Qualified! You answered ' + correctAnswersCount + ' out of ' + questions.length + ' correctly.';
+        certificateContainer.style.display = 'block';
+      } else {
+        resultMessage.textContent = 'Not Qualified. You answered ' + correctAnswersCount + ' out of ' + questions.length + ' correctly.';
+        certificateContainer.style.display = 'none';
+      }
+      resultMessage.style.display = 'block';
+    }
+
+    function generateCertificate() {
+      var name = document.getElementById('nameInput').value;
+      var date = new Date().toLocaleDateString();
+
+      if (!name) {
+        alert("Please enter your name.");
+        return;
+      }
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      var img = new Image();
+      img.src = '/images/python-cert.png';
+      img.onload = function () {
+        doc.addImage(img, 'PNG', 0, 0, 210, 297);
+        doc.setFontSize(30);
+        doc.text(name, 105, 145, null, null, 'center');
+        doc.save("Python_Certificate.pdf");
+      };
+    }

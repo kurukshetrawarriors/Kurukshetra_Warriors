@@ -1,0 +1,82 @@
+extends layout
+
+block content
+  style.
+    .fas.fa-star, .far.fa-star {
+      color: #FFD700; /* Gold color */
+    }
+    .enroll-btn {
+      display: inline-block;
+      background-color: #007bff; /* Bootstrap's primary blue color */
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      float: right;
+      margin-top: 10px; /* Space below the heading */
+    }
+    .enroll-btn:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+      color: white;
+      text-decoration: none;
+    }
+
+  .row.banner 
+    .col-12
+      h1  Python Programming
+
+  // Enroll Now button below the heading in the top-right
+  a.enroll-btn(href='/Courses/enroll') Enroll Now
+
+  .row
+    .col-12.col-lg-9
+      .row
+        .col-12.col-md-6
+          p.rating
+            i.fas.fa-star
+            i.fas.fa-star
+            i.fas.fa-star
+            i.fas.fa-star
+            i.fas.fa-star
+
+          .card.card-primary
+            .card-block
+              h2.card-title Live Teaching Timings
+              p.card-text Monday - Friday : 7:00pm - 9:00pm
+              p.card-text Saturday : 5:00pm - 10:00pm
+              p.card-text Sunday : 2:00pm - 5:00pm
+
+          .card.card-primary
+            .card-block
+              h2.card-title Contents
+              span.badge.badge-warning
+                i.fa.fa-check
+                | &nbsp;Python Basics
+              | &nbsp;
+              span.badge.badge-warning
+                i.fa.fa-check
+                | &nbsp;Functions
+              | &nbsp;
+              span.badge.badge-warning
+                i.fa.fa-check
+                | &nbsp;Object-Oriented Programming
+              span.badge.badge-warning
+                i.fa.fa-check
+                | &nbsp;Modules 
+              span.badge.badge-warning
+                i.fa.fa-check
+                | &nbsp;File Handling
+              span.badge.badge-warning
+                i.fa.fa-check
+                | &nbsp;Data Structures
+              span.badge.badge-warning
+                i.fa.fa-check
+                | &nbsp;Libraries (Numpy, Pandas)
+
+    .row
+      .col-12
+        .card.card-primary.review-card
+          .card-block
+            a.btn.btn-primary.float-right(href='/Courses/review/new') ➥ Add review
+            h2.card-title Student reviews

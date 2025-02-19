@@ -41,6 +41,49 @@ block content
       display: flex;
       flex-direction: column; /* Stack items vertically */
     }
+    #searchContainer {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 10px 40px 10px 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      display: block;
+    }
+    #searchIcon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #777;
+      cursor: pointer;
+    }
+    #searchResults {
+      position: absolute;
+      width: 100%;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-top: 2px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+    }
+    #searchResults div {
+      padding: 10px;
+      cursor: pointer;
+    }
+    #searchResults div:hover {
+      background: #f0f0f0;
+    }
 
   .row.banner
     .col-12
@@ -53,6 +96,13 @@ block content
         | <br /><br />
         | <h3>Here you can access text books either by clicking on image or text.</h3>
         | <center><h1 style="color:red;">TEXT BOOKS</h1></center>
+  // Search Bar
+  .row
+    .col-12
+      #searchContainer
+        input#searchInput(type="text", placeholder="Search notes...", onkeyup="filterNotes()")
+        i#searchIcon.fas.fa-search(onclick="filterNotes()")
+        #searchResults
       .programming-languages-links
         .nav-item
           a.text(href='https://drive.google.com/file/d/1ThjoGGwy8CJMnM2Qnkg_BOSEiFZUlw2H/view?usp=sharing')
@@ -102,4 +152,50 @@ block content
           a.text(href='https://drive.google.com/file/d/1haoCiXYxgFnPyjhayICw30Sja9EnK5PQ/view?usp=sharing')
             img.media-img(src='/images/FSE.png')
             | Software Engineering
+  script.
+    var notes = [
+        { name: "C++ Programming", url: "https://drive.google.com/file/d/1ThjoGGwy8CJMnM2Qnkg_BOSEiFZUlw2H/view?usp=sharing" },
+        { name: "HTML", url:"https://drive.google.com/file/d/12SNNf3kQZ3qqO_kha_SkC9SGAIqevsqF/view?usp=sharing"},
+        { name: "CSS", url:"https://drive.google.com/file/d/1U76QZ1nBwt6bjqbYt5w3TuVZH-PXCS1n/view?usp=sharing"},
+        { name: "JavaScript", url:"https://drive.google.com/file/d/1jtBJB49F2LY94izdOOLoCJBdiwCU7yp_/view?usp=sharing"},
+        { name: "HTML,CSS,JS", url:"https://drive.google.com/file/d/18tin_hbautziTanBWJ3Bx3hWQlcq7nyw/view?usp=sharing"},
+        { name: "DataBase Management Systems",url:"https://drive.google.com/file/d/1RSmaEaQfDRaNnyBy7-RjEVrMHr1KxIT8/view?usp=sharing"},
+        { name: "MEAN Stack Development",url:"https://drive.google.com/file/d/1E_2ceGU4SKQu_qJZGZAPJZkNN4R8DegW/view?usp=sharing"},
+        { name: "Machine Learning",url:"https://drive.google.com/file/d/1WoSpj9AzXpLyg9jDVBTObE6i-b8rT1M2/view?usp=sharing"},
+        { name: "Python with ML",url:"https://drive.google.com/file/d/1-7bBy-gYVChUjAZDkVL6Z3B_c14WW6eP/view?usp=sharing"},
+        { name: "Image Processing ML",url:"https://drive.google.com/file/d/1x2uaz_OK3XZ33BeFu3KtU68BD4eCP06C/view?usp=sharing"},
+        { name: "Android",url:"https://drive.google.com/file/d/1NkcDBgAAGKRscxoi7BAXZhqH1dZJSqfy/view?usp=sharing"},
+        { name: "Software Engineering",url:"https://drive.google.com/file/d/1haoCiXYxgFnPyjhayICw30Sja9EnK5PQ/view?usp=sharing"}
+
+    ];
+
+    function filterNotes() {
+        var input = document.getElementById("searchInput").value.toLowerCase();
+        var resultsDiv = document.getElementById("searchResults");
+        resultsDiv.innerHTML = "";
+        if (input === "") {
+            resultsDiv.style.display = "none";
+            return;
+        }
+        var filtered = notes.filter(note => note.name.toLowerCase().includes(input));
+        if (filtered.length > 0) {
+            resultsDiv.style.display = "block";
+            filtered.forEach(note => {
+                var div = document.createElement("div");
+                div.textContent = note.name;
+                div.onclick = function() { window.location.href = note.url; };
+                resultsDiv.appendChild(div);
+            });
+        } else {
+            resultsDiv.style.display = "none";
+        }
+    }
+
+    document.addEventListener("click", function(event) {
+        var searchResults = document.getElementById("searchResults");
+        var searchInput = document.getElementById("searchInput");
+        if (!searchResults.contains(event.target) && event.target !== searchInput) {
+            searchResults.style.display = "none";
+        }
+    });
 

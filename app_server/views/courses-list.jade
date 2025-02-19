@@ -1,5 +1,7 @@
 extends layout
 
+
+
 block content
   style.
     .text-golden {
@@ -23,11 +25,63 @@ block content
       display: flex;
       flex-direction: column;
     }
+    #searchContainer {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 10px 40px 10px 10px; /* Space for the icon */
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      display: block;
+    }
+    #searchIcon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #777;
+      cursor: pointer;
+    }
+    #searchResults {
+      position: absolute;
+      width: 100%;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-top: 2px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+    }
+    #searchResults div {
+      padding: 10px;
+      cursor: pointer;
+    }
+    #searchResults div:hover {
+      background: #f0f0f0;
+    }
+
+  
 
   .row.banner
     .col-12
       h1 Free Courses With Certificate
       small &nbsp;Start learning, keep developing!
+  // Search Bar Section
+  .row
+    .col-12
+      #searchContainer
+        input#searchInput(type="text", placeholder="Search courses...", onkeyup="filterCourses()")
+        i#searchIcon.fas.fa-search(onclick="filterCourses()")
+        #searchResults
 
   .row
     .col-12.col-md-8
@@ -49,7 +103,6 @@ block content
             span.badge.badge-warning Pointers
             span.badge.badge-warning Structures
             span.badge.badge-warning Data Structures
-
       .card
         .card-block
           h4
@@ -141,5 +194,45 @@ block content
             span.badge.badge-warning Model Evaluation
             span.badge.badge-warning Feature Engineering
 
-    .col-12.col-md-4
-      p.lead Looking for free online learning? Kurukshetra Warriors helps you to explore free courses. Perhaps you can also develop projects on your own after learning from us.
+  .col-12.col-md-4
+    p.lead Looking for free online learning? Kurukshetra Warriors helps you to explore free courses. Perhaps you can also develop projects on your own after learning from us.
+
+  script.
+    var courses = [
+        { name: "C Programming", url: "/Courses" },
+        { name: "Python", url: "/Courses/pyenroll" },
+        { name: "DBMS", url: "/Courses" },
+        { name: "Data Structures", url: "/Courses" },
+        { name: "Artificial Intelligence (AI)", url: "/Courses" },
+        { name: "Machine Learning (ML)", url: "/Courses" }
+    ];
+
+    function filterCourses() {
+        var input = document.getElementById("searchInput").value.toLowerCase();
+        var resultsDiv = document.getElementById("searchResults");
+        resultsDiv.innerHTML = "";
+        if (input === "") {
+            resultsDiv.style.display = "none";
+            return;
+        }
+        var filtered = courses.filter(course => course.name.toLowerCase().includes(input));
+        if (filtered.length > 0) {
+            resultsDiv.style.display = "block";
+            filtered.forEach(course => {
+                var div = document.createElement("div");
+                div.textContent = course.name;
+                div.onclick = function() { window.location.href = course.url; };
+                resultsDiv.appendChild(div);
+            });
+        } else {
+            resultsDiv.style.display = "none";
+        }
+    }
+
+    document.addEventListener("click", function(event) {
+        var searchResults = document.getElementById("searchResults");
+        var searchInput = document.getElementById("searchInput");
+        if (!searchResults.contains(event.target) && event.target !== searchInput) {
+            searchResults.style.display = "none";
+        }
+    });

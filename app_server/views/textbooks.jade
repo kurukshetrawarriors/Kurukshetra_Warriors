@@ -100,7 +100,7 @@ block content
   .row
     .col-12
       #searchContainer
-        input#searchInput(type="text", placeholder="Search text books...", onkeyup="filterNotes()")
+        input#searchInput(type="text", placeholder="Search notes...", onkeyup="filterNotes()")
         i#searchIcon.fas.fa-search(onclick="filterNotes()")
         #searchResults
       .programming-languages-links
@@ -152,6 +152,18 @@ block content
           a.text(href='https://drive.google.com/file/d/1haoCiXYxgFnPyjhayICw30Sja9EnK5PQ/view?usp=sharing')
             img.media-img(src='/images/FSE.png')
             | Software Engineering
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1KSmBqeLAM39NL690uUf8cyIzvpf2j_e5/view?usp=drive_link')
+            img.media-img(src='/images/IRS.png')
+            | Information Retrieval Systems
+        .nav-item
+          a.text(href='https://drive.google.com/drive/u/2/folders/1cl1S_biXScI3nPVZpbTmCjz4TTPOKdkI')
+            img.media-img(src='/images/CVIP.jpeg')
+            | Computer Vision and Image Processing 
+        .nav-item
+          a.text(href='https://drive.google.com/file/d/1UsCLpdyYABxVFlJ1g1nmdiX9TvZ4oLb4/view?usp=drive_link')
+            img.media-img(src='/images/CNS.png')
+            | Cryptography and Network Security
   script.
     var notes = [
         { name: "C++ Programming", url: "https://drive.google.com/file/d/1ThjoGGwy8CJMnM2Qnkg_BOSEiFZUlw2H/view?usp=sharing" },
@@ -165,7 +177,10 @@ block content
         { name: "Python with ML",url:"https://drive.google.com/file/d/1-7bBy-gYVChUjAZDkVL6Z3B_c14WW6eP/view?usp=sharing"},
         { name: "Image Processing ML",url:"https://drive.google.com/file/d/1x2uaz_OK3XZ33BeFu3KtU68BD4eCP06C/view?usp=sharing"},
         { name: "Android",url:"https://drive.google.com/file/d/1NkcDBgAAGKRscxoi7BAXZhqH1dZJSqfy/view?usp=sharing"},
-        { name: "Software Engineering",url:"https://drive.google.com/file/d/1haoCiXYxgFnPyjhayICw30Sja9EnK5PQ/view?usp=sharing"}
+        { name: "Software Engineering",url:"https://drive.google.com/file/d/1haoCiXYxgFnPyjhayICw30Sja9EnK5PQ/view?usp=sharing"},
+        { name: "Information Retrieval Systems",url:"https://drive.google.com/file/d/1KSmBqeLAM39NL690uUf8cyIzvpf2j_e5/view?usp=drive_link"},
+        { name: "Computer Vision and Image Processing",url:"https://drive.google.com/drive/u/2/folders/1cl1S_biXScI3nPVZpbTmCjz4TTPOKdkI"},
+        { name: "Cryptography and Network Security",url:"https://drive.google.com/file/d/1UsCLpdyYABxVFlJ1g1nmdiX9TvZ4oLb4/view?usp=drive_link"}
 
     ];
 

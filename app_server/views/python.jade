@@ -79,9 +79,9 @@ block content
     var player;
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
-        height: '315',
-        width: '560',
-        videoId: 'kqtD5dpn9C8', // Replace with your Python course video ID
+        height: '500',
+        width: '1400',
+        videoId: 'pWWSVjPPzn4', // Replace with your Python course video ID
         events: {
           'onReady': onPlayerReady,
           'onStateChange': onPlayerStateChange
@@ -116,10 +116,15 @@ block content
 
       var questions = [
         { question: "What is the output of print(2 ** 3)?", options: ["8", "6", "4", "Error"], answer: "8" },
-        { question: "Which keyword is used to define a function in Python?", options: ["def", "function", "lambda", "define"], answer: "def" },
+        { question: "How many types of Operators are there in python?", options:["8","6","7","None of these"], answer:8},
+        { question: "Which keyword is used to define a function in Python?", options: ["def", "function", "lambda", "define", "Both 1 & 3"], answer: "Both 1 & 3" },
         { question: "What does 'len()' function return?", options: ["Length of an object", "Maximum value", "Minimum value", "Sum"], answer: "Length of an object" },
         { question: "Which data type is immutable in Python?", options: ["list", "tuple", "dictionary", "set"], answer: "tuple" },
-        { question: "Who developed Python language?", options: ["Guido van Rossum", "Dennis Ritchie", "James Gosling", "Ken Thompson"], answer: "Guido van Rossum" }
+        { question: "Who developed Python language?", options: ["Guido van Rossum", "Dennis Ritchie", "James Gosling", "Ken Thompson"], answer: "Guido van Rossum" },
+        { question: "Which inheritance uses super keyword?", options: ["Single level Inheritance","Multilevel Inheritance","Multiple Inheritance","Multipath Inheritance"], answer:"Multiple Inheritance"},
+        { question: "In Exception Handling which block will be always executed?", options:["try","except","finally","None of these"],answer: "finally"},
+        { question: "Which operation is not performed while doing file handling?", options:["reading","writing","appending","deleting"],answer:"deleting"},
+        { question: "Which technique of sorting effects the original list?", options:["sort","sorted","sorting","Both 1 & 2"],answer:"sort"}
       ];
 
       mcqContainer.innerHTML = '';
@@ -156,10 +161,15 @@ block content
     function submitAssessment() {
       var questions = [
         { question: "What is the output of print(2 ** 3)?", answer: "8" },
-        { question: "Which keyword is used to define a function in Python?", answer: "def" },
+        { question: "How many types of Operators are there in python?", answer: "8"},
+        { question: "Which keyword is used to define a function in Python?", answer: "Both 1 & 3" },
         { question: "What does 'len()' function return?", answer: "Length of an object" },
         { question: "Which data type is immutable in Python?", answer: "tuple" },
-        { question: "Who developed Python language?", answer: "Guido van Rossum" }
+        { question: "Who developed Python language?", answer: "Guido van Rossum" },
+        { question: "Which inheritance uses super keyword?", answer:"Multiple Inheritance"},
+        { question: "In Exception Handling which block will be always executed?", answer:"finally"},
+        { question: "Which operation is not performed while doing file handling?", answer:"deleting"},
+        { question: "Which technique of sorting effects the original list?", answer:"sort"}
       ];
 
       var correctAnswersCount = 0;
@@ -173,7 +183,7 @@ block content
       var resultMessage = document.getElementById('resultMessage');
       var certificateContainer = document.getElementById('certificateContainer');
 
-      if (correctAnswersCount >= 3) {
+      if (correctAnswersCount >= 5) {
         resultMessage.textContent = 'Qualified! You answered ' + correctAnswersCount + ' out of ' + questions.length + ' correctly.';
         certificateContainer.style.display = 'block';
       } else {
